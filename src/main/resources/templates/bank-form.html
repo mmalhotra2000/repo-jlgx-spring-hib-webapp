@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Bank Transaction Form</title>
+</head>
+<body>
+
+
+	<form th:action="@{/bank/transfer}" th:object="${bankFormBean}" method="post">
+
+		Transfer From Account : <select
+			th:field="*{fromAccountNum}">
+			<option
+				th:each=" bankAccountModel : ${bankFormBean.bankAccountModelsDD}"
+				th:value="${bankAccountModel.accNo}"
+				th:text="${bankAccountModel.accountHolderName}"></option>
+		</select> 
+	
+		<br>
+		Transfer To Account : <select th:field="*{toAccountNum}">
+			<option
+				th:each=" bankAccountModel : ${bankFormBean.bankAccountModelsDD}"
+				th:value="${bankAccountModel.accNo}"
+				th:text="${bankAccountModel.accountHolderName}"></option>
+		</select> 
+		
+			<br>
+		Transaction Type : <select th:field="*{transactionType}">
+		<option
+				th:each=" tt : ${bankFormBean.transactionTypes}"
+				th:value="${tt}"
+				th:text="${tt}"></option>
+		</select> 
+		
+			<br>
+		Amount : <input type="text" th:field="*{balance}" id="Amount"
+			placeholder="Amount"> <input type="submit"
+			value="Transfer">
+
+	</form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+	<h2>Account Details</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Account Number</th>
+				<th>Account Holder Name</th>
+				<th>Amount</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${bankTransactionBean.bankAccountModels.empty}">
+				<td colspan="2">No Account present</td>
+			</tr>
+			<tr
+				th:each="bankAccountModel : ${bankTransactionBean.bankAccountModels}">
+				<td><span th:text="${bankAccountModel.accNo}"></span></td>
+				<td><span th:text="${bankAccountModel.accountHolderName}"></span></td>
+				<td><span th:text="${bankAccountModel.balance}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<br>
+
+	<h2>Transaction History</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Transaction Type</th>
+				<th>Amount</th>
+				<th>Transaction Date</th>
+				<th>Account Holder Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${bankTransactionBean.transactionHistoryModels.empty}">
+				<td colspan="2">No Transactions Available</td>
+			</tr>
+			<tr
+				th:each="transactionHistoryModel : ${bankTransactionBean.transactionHistoryModels}">
+				<td><span th:text="${transactionHistoryModel.id}"></span></td>
+				<td><span th:text="${transactionHistoryModel.transactionType}"></span></td>
+				<td><span th:text="${transactionHistoryModel.amount}"></span></td>
+				<td><span th:text="${transactionHistoryModel.transactionDate}"></span></td>
+				<td><span
+					th:text="${transactionHistoryModel.bankAccountModel.accountHolderName}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<br>
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<a th:href="@{/}">Go To Main Menu</a>
+		</div>
+
+	</div>
+
+
+</body>
+</html>
