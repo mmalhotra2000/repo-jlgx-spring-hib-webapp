@@ -30,6 +30,18 @@ public class BankFormController {
 		model.addAttribute("bankFormBean", bankFormBean);
 		return "bank-form";
 	}
+	
+	//searchByName
+	
+	@RequestMapping("/searchByName")
+	public String searchByName( @ModelAttribute("bankTransactionBean")  BankTransactionBean bankTransactionBeanParam, Model model) {
+		
+		System.out.println(bankTransactionBean.getSearchByName());
+		bankTransactionBean.getTransactionHistoryModelsByName(bankTransactionBeanParam.getSearchByName());
+		model.addAttribute("bankTransactionBean", bankTransactionBean);
+		
+		return "bank-transactions";
+	}
 
 	@RequestMapping("/transfer")
 	public String transfer(@ModelAttribute("bankFormBean") BankFormBean bankFormBean, Model model) {

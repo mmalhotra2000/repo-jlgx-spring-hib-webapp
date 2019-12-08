@@ -75,4 +75,21 @@ public class BankServiceImpl implements BankService {
 
 		transactionHistoryModelRepository.save(transactionHistoryModel);
 	}
+
+	@Override
+	public List<TransactionHistoryModel> getTransactionHistoryModelsByName(String searchByName2) {
+		return transactionHistoryModelRepository.findByName(searchByName2);
+	}
+
+	@Override
+	public BankAccountModel getBankAccountModelByName(String name) {
+		// TODO Auto-generated method stub
+		return bankAccountModelRepository.findByAccountHolderName(name);
+	}
+
+	@Override
+	public BankAccountModel getBankAccountModelByNameAndAcc(String name, Long acc) {
+		// TODO Auto-generated method stub
+		return bankAccountModelRepository.findByAccountHolderNameAndAccNo(name,acc);
+	}
 }

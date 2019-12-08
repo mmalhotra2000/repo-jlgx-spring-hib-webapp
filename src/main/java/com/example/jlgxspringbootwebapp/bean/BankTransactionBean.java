@@ -19,8 +19,10 @@ import com.example.jlgxspringbootwebapp.service.BankService;
 @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class BankTransactionBean {
 
+	private String searchByName;
+
 	private List<TransactionHistoryModel> transactionHistoryModels;
-	
+
 	private List<BankAccountModel> bankAccountModels;
 
 	@Autowired
@@ -56,6 +58,26 @@ public class BankTransactionBean {
 
 	public void setBankAccountModels(List<BankAccountModel> bankAccountModels) {
 		this.bankAccountModels = bankAccountModels;
+	}
+
+	public String getSearchByName() {
+		return searchByName;
+	}
+
+	public void setSearchByName(String searchByName) {
+		this.searchByName = searchByName;
+	}
+
+	public BankService getBankServiceImpl() {
+		return bankServiceImpl;
+	}
+
+	public void setBankServiceImpl(BankService bankServiceImpl) {
+		this.bankServiceImpl = bankServiceImpl;
+	}
+
+	public void getTransactionHistoryModelsByName(String searchByName2) {
+		transactionHistoryModels = bankServiceImpl.getTransactionHistoryModelsByName(searchByName2);		
 	}
 
 }

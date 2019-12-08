@@ -21,4 +21,10 @@ public interface BankService {
 
 	void createTransactionHistory(double balance, String transactionType, BankAccountModel fromAccountModel);
 
+	List<TransactionHistoryModel> getTransactionHistoryModelsByName(String searchByName2);
+
+	BankAccountModel getBankAccountModelByName(String name);
+
+	BankAccountModel getBankAccountModelByNameAndAcc(String name, Long acc);
+
 }

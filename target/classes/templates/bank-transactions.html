@@ -32,6 +32,14 @@
 	<br>
 
 	<h2>Transaction History</h2>
+
+	<form th:action="@{/bank/searchByName}" th:object="${bankTransactionBean}"
+		method="post">
+
+		Search By Name : <input type="text" th:field="*{searchByName}" id="search"
+			placeholder="Please enter name"> <input type="submit" value="Search">
+	</form>
+
 	<table>
 		<thead>
 			<tr>

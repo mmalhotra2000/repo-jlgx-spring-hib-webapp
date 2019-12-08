@@ -9,7 +9,8 @@
 
 	<form th:action="@{/bank/transfer}" th:object="${bankFormBean}" method="post">
 
-		Transfer From Account : <select
+		Transfer From Account : 
+		<select
 			th:field="*{fromAccountNum}">
 			<option
 				th:each=" bankAccountModel : ${bankFormBean.bankAccountModelsDD}"

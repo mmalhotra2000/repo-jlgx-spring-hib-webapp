@@ -8,4 +8,8 @@ import com.example.jlgxspringbootwebapp.model.BankAccountModel;
 @Repository
 public interface BankAccountModelRepository extends JpaRepository<BankAccountModel, Long> {
 
+	BankAccountModel findByAccountHolderName(String name);
+
+	BankAccountModel findByAccountHolderNameAndAccNo(String name, Long acc);
+
 }
